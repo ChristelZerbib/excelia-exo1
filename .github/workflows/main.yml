@@ -50,6 +50,7 @@ jobs:
           flake8 helpers.py
 
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Chekout repository
