@@ -39,11 +39,13 @@ jobs:
       # Runs tests
       - name: Tests
         run: |
+          pip install -r requirements.txt
           python -m pytest helpers.py --doctest-modules --cov
 
       #Runs flake 8
       - name: Flake 8
         run: |
+          pip install -r requirements.txt
           flake8 main.py
           flake8 helpers.py
 
