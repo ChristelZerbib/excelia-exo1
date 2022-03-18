@@ -1,4 +1,7 @@
+
+
 import random
+
 
 def generate_cookie_value():
     """
@@ -7,9 +10,12 @@ def generate_cookie_value():
     >>> len(generate_cookie_value())
     128
     """
-    return str("".join(random.choice("0123456789ABCDEFadcdef@&!") for i in range(128)))
+    return str(
+        "".join(random.choice("0123456789ABCDEFadcdef@&!") for i in range(128))
+        )
 
-def somme (a, b): 
+
+def somme(a, b):
     """
     Voici un exemple de la fonction somme
 
