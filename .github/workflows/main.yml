@@ -20,24 +20,30 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Runs tests
+      - name: Virtual environnement
+        run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt
+
+  test :
+    needs: build
+    runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       # Runs tests
       - name: Tests
         run: |
-          python3 -m venv .venv
-          source .venv/bin/activate
-          pip install -r requirements.txt
           python -m pytest helpers.py --doctest-modules --cov
 
       #Runs flake 8
       - name: Flake 8
         run: |
-          python3 -m venv .venv
-          source .venv/bin/activate
-          pip install -r requirements.txt
           flake8 main.py
           flake8 helpers.py
 
