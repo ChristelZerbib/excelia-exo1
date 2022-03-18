@@ -1,9 +1,7 @@
 from bottle import route, run, template, request, response, redirect
 import sqlite3
-import random
+from helpers import somme, generate_cookie_value
 
-def generate_cookie_value():
-    return str("".join(random.choice("0123456789ABCDEFadcdef@&!") for i in range(128)))
 
 @route('/hello/<name>')
 def hello(name):
@@ -70,5 +68,11 @@ def user_info():
         redirect("/login")
     else: 
         return template("user_info", username = result[1], email = result[2])
+
+@route('/addition/<a>/<b>')
+def addition(a, b) : 
+    resultat = somme(a,b)
+    return template('<b>La somme de {{a}} et de {{b}} est {{resultat}} !</b>', a=a, b=b, resultat=resultat)
+
 
 run(host='localhost', port=8081, reloader=True)
