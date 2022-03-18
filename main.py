@@ -1,5 +1,6 @@
 from bottle import route, run, template, request, response, redirect
 import sqlite3
+import sys
 from helpers import somme, generate_cookie_value
 
 
@@ -81,4 +82,4 @@ def addition(a, b):
     return template('<b>La somme de {{a}} et de {{b}} est {{resultat}} !</b>', a=a, b=b, resultat=resultat) # noqa : E501
 
 
-run(host='localhost', port=8081, reloader=True)
+run(host="0.0.0.0", port=sys.argv[1], reloader=True)
