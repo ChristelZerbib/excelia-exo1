@@ -24,17 +24,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-# Runs a set of commands using the runners shell
-      - name: Vitual env creation
+      # Runs tests
+      - name: Tests
         run: |
           python3 -m venv .venv
           source .venv/bin/activate
           pip install -r requirements.txt
-
-      #Runs tests and flake 8
-      - name: Tests and flake 8
-        run: |
           python -m pytest helpers.py --doctest-modules --cov
+
+      #Runs flake 8
+      - name: Flake 8
+        run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt
           flake8 main.py
           flake8 helpers.py
 
