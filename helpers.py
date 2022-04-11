@@ -8,7 +8,9 @@ def generate_cookie_value():
     >>> len(generate_cookie_value())
     128
     """
-    return str("".join(random.choice("0123456789ABCDEFadcdef@&!") for i in range(128)))
+    return str(
+        "".join(random.choice("0123456789ABCDEFadcdef@&!") for i in range(128))
+    )  # noqa : E501
 
 
 def somme(a, b):

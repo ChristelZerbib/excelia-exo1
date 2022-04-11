@@ -5,11 +5,11 @@ conn = sqlite3.connect("fb.db")
 print("DB Created")
 
 conn.execute(
-    "CREATE TABLE if not exists facebook (id INTEGER PRIMARY KEY AUTOINCREMENT, username char(100) NOT NULL UNIQUE, email char(100) NOT NULL UNIQUE, password char(100) NOT NULL, cookie char(128) UNIQUE)"
+    "CREATE TABLE if not exists facebook (id INTEGER PRIMARY KEY AUTOINCREMENT, username char(100) NOT NULL UNIQUE, email char(100) NOT NULL UNIQUE, password char(100) NOT NULL, cookie char(128) UNIQUE)"  # noqa : E501
 )
 
 conn.execute(
-    "INSERT INTO facebook (username, email, password) VALUES ('Marie', 'mariezerbib@gmail.com', 'TEST')"
+    "INSERT INTO facebook (username, email, password) VALUES ('Marie', 'mariezerbib@gmail.com', 'TEST')"  # noqa : E501
 )
 
 conn.commit()
