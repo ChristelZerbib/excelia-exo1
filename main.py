@@ -58,7 +58,7 @@ def login():
         else:
             cookie_value = generate_cookie_value()
             cursor.execute(
-                f"UPDATE facebook SET cookie = '{cookie_value}' WHERE username = '{username}'"
+                f"UPDATE facebook SET cookie = '{cookie_value}' WHERE username = '{username}'"  # noqa : E501
             )
             conn.commit()
             response.set_cookie("fb_session", cookie_value, path="/")
